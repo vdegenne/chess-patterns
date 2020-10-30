@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>chess-pattern</title>
+
+  </head>
+  <body>
+    <style>
+      body {margin:0}
+      #wrapper {
+        padding: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        user-select: none;
+      }
+      #wrapper > img {
+        /* display: block; */
+        margin: 5px;
+        box-sizing: border-box;
+        width: calc(100%/4 - 10px);
+        transition: transform 0.5s ease-out;
+        cursor: s-resize;
+      }
+      #wrapper > img.rotate {
+        transform: rotate(180deg);
+      }
+    </style>
+
+    <div id=wrapper>
+
+    </div>
+    <script>
+      window.onload = function () {
+        const images = ['bishop-knight-king-attack.png','queens-pawn-opening-mikenas-defense.gif','queens-pawn-opening-zukertort-chigorin-variation.gif','reti-opening-arctic-defense.gif'];
+        // const imgEls = [];
+        const onImgClick = function () {
+          this.classList.toggle('rotate');
+          // console.log(this);
+        }
+        for (image of images) {
+          const imgEl = document.createElement('img');
+          imgEl.title = image;
+          imgEl.src = `./images/${image}`;
+          imgEl.onclick = onImgClick;
+          wrapper.append(imgEl);
+          // imgEls.push(imgEl);
+        }
+        // wrapper.innerHTML = imgEls.map(el => el.outerHTML).join('')
+      }
+    </script>
+  </body>
+</html>
