@@ -16,7 +16,8 @@
         /* display: block; */
         margin: 5px;
         box-sizing: border-box;
-        width: calc(100%/4 - 10px);
+        width: 300;
+        /* width: calc(100%/4 - 10px); */
         transition: transform 0.5s ease-out;
         cursor: s-resize;
       }
@@ -38,8 +39,8 @@
         }
         for (image of images) {
           const imgEl = document.createElement('img');
-          imgEl.title = image;
-          imgEl.src = `./images/${image}`;
+          imgEl.title = unescape(image).split('.').slice(0, -1).join('.');
+          imgEl.src = `./images/${unescape(image)}`;
           imgEl.onclick = onImgClick;
           wrapper.append(imgEl);
           // imgEls.push(imgEl);
